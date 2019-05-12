@@ -1,0 +1,12 @@
+@import url('https://fonts.googleapis.com/css?family=Frank+Ruhl+Libre:700|IBM+Plex+Sans');
+
+h1 {
+    font-family: 'Frank Ruhl Libre', serif;
+}
+
+body {
+    font-family: 'IBM Plex Sans', sans-serif;
+    background-color: #C04041;
+    font-size: 16px;
+    color: #E8E0D3;
+}
