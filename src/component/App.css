@@ -1,12 +1,32 @@
+/* App.css */
+
 @import url('https://fonts.googleapis.com/css?family=Frank+Ruhl+Libre:700|IBM+Plex+Sans');
+
+
 
 h1 {
     font-family: 'Frank Ruhl Libre', serif;
+    font-size: 50px;
+}
+
+.title {
+     font-family: 'Frank Ruhl Libre', serif;
+    font-size: 50px;
+    letter-spacing: -0.5px;
+    margin-bottom: 5%;
+    margin-top: 10%;
+}
+
+.titlespacer {
+    content: '';
+    width: 8%;
+    min-width: 20px;
+    max-width: 100px;
 }
 
 body {
     font-family: 'IBM Plex Sans', sans-serif;
-    background-color: #C04041;
+    background-color: #C04042;
     font-size: 16px;
-    color: #E8E0D3;
+    color: #F2EBDF;
 }

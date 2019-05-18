@@ -3,11 +3,14 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "bootstrap": "^4.3.1",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
-    "react-scripts": "2.1.8"
+    "react-scripts": "2.1.8",
+    "spotify-web-api-js": "^1.2.0"
   },
   "scripts": {
+    "testfunc": "node -e 'require(\"./src/component/logic.js\").testme()'",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",

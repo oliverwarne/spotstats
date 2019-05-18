@@ -20,13 +20,13 @@ class LoginButton extends React.Component {
 
 function Prev(props) {
     return (
-        <button className="btn btn-link" onClick={props.toggle} disabled={props.active}>PREV</button>
+        <button className="btn btn-link" onClick={props.toggle} disabled={props.active}> {'<'} </button>
     );
 }
 
 function Next(props) {
     return (
-        <button className="btn btn-link" onClick={props.toggle} disabled={props.active}>NEXT</button>
+        <button className="btn btn-link" onClick={props.toggle} disabled={props.active}> {'>'} </button>
     );
 }
 
@@ -78,10 +78,10 @@ class ArtistTableContainer extends React.Component {
         const next_disabled = this.state.next_disabled;
         const prev_disabled = this.state.prev_disabled;
         return (
-            <div className="d-flex flex-column">
-                <p> {this.props.label} </p>
+            <div>
+                    <div className=''> {this.props.label} </div>
                     {/*
-                    <div className='col-md-6'>
+                    <div className='buttons'>
                         <Prev toggle={(e) => this.backPage(e)} active={prev_disabled} />
                         <Next toggle={(e) => this.forwardPage(e)} active={next_disabled} />
                     </div>
@@ -111,9 +111,9 @@ class SortedArtistTable extends React.Component {
       //  console.log(rows);
         
         return (
-            <table>
-                <tbody>{rows}</tbody>
-            </table>
+            <div className='container'>
+                {rows}
+            </div>
         )
     }
 
@@ -139,12 +139,11 @@ class ArtistRow extends React.Component {
 
     render() {
         return (
-            <tr
+            <div className='row artistrow'
             onClick={() => this.handleClick()}
             >
-                <td className="align-left">{this.props.artist.counter}</td>
-                <td className="align-left">{this.props.artist.name}</td>
-            </tr>
+                {this.props.artist.counter}{"   "}{this.props.artist.name}
+            </div>
         );
     }
 
