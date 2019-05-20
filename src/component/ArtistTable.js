@@ -1,6 +1,5 @@
 import React from 'react';
 import * as logic from './logic.js';
-import 'bootstrap/dist/css/bootstrap.css';
 import './ArtistTable.css';
 /*
 class LoginButton extends React.Component {
@@ -78,8 +77,8 @@ class ArtistTableContainer extends React.Component {
         const next_disabled = this.state.next_disabled;
         const prev_disabled = this.state.prev_disabled;
         return (
-            <div>
-                    <div className=''> {this.props.label} </div>
+            <div className='artisttable'>
+                    <div className='label'> {this.props.label} </div>
                     {/*
                     <div className='buttons'>
                         <Prev toggle={(e) => this.backPage(e)} active={prev_disabled} />

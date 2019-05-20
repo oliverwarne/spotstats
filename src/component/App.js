@@ -2,8 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import ArtistTableContainer from './ArtistTable.js';
 import TrackStatsContainer from './TrackStats.js';
+import Intro from './Intro.js';
 import * as logic from './logic.js';
-import 'bootstrap/dist/css/bootstrap.css';
 import "./App.css";
 import "./ArtistTable.css";
 
@@ -100,40 +100,21 @@ class App extends React.Component {
                 </div>
 
                 {/* Intro */}
-                <div className='row'>
-                    <div className='col-md-1 col-sm-0'> </div>
-                    <div className='title'>Spotify Statistics</div>
-                </div>
-                <div className='row'>
-                    <div className='col-md-2'> </div>
-                    <div className='col-md-5'> 
-                        <p> This site really only works if you use the Spotify save/like feature a lot. Maybe I will get around to analyzing playlists, but until then, have fun! Let me know if you have questions or issues.</p>
-                    </div>
-                </div>
+                <Intro />
 
                 {/* Top Artists */}
-                <div className='row'>
-                    <div className='col-md-1 col-sm-0'> </div>
-                    <div className='title'> Top Artists </div>
-                </div>
-                <div className='row'>
-                    <div className='col-md-2 col-sm-0' />
-                    <div className='col-md-2 col-sm-4'>
-                        <ArtistTableContainer artists = 
-                            {this.state.top_artists_long_term.items} 
-                            label='All Time'/>
-                    </div>
-                    <div className='col-md-2 col-sm-4'>
-                        <ArtistTableContainer artists =
-                            {this.state.top_artists_medium_term.items} 
-                            label='6 Months'/>
-                    </div>
-                    <div className='col-md-2 col-sm-4'>
+                <div className='title'> Top Artists </div>
+                <div className='top-artists'>
+                        <div className='textspacer' />
                         <ArtistTableContainer artists =
                             {this.state.top_artists_medium_term.items} 
                             label='4 Weeks'/>
-                    </div>
-                    <div className='col-md-4 col-sm-0' />
+                         <ArtistTableContainer artists =
+                            {this.state.top_artists_medium_term.items} 
+                            label='6 Months'/>
+                        <ArtistTableContainer artists = 
+                            {this.state.top_artists_long_term.items} 
+                            label='All Time'/>
                 </div>
             </div>
             )

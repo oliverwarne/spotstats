@@ -2,19 +2,14 @@
 
 @import url('https://fonts.googleapis.com/css?family=Frank+Ruhl+Libre:700|IBM+Plex+Sans');
 
-
-
-h1 {
-    font-family: 'Frank Ruhl Libre', serif;
-    font-size: 50px;
-}
-
 .title {
-     font-family: 'Frank Ruhl Libre', serif;
-    font-size: 50px;
-    letter-spacing: -0.5px;
+    font-family: 'Frank Ruhl Libre', serif;
+    font-size: calc(50px + 1.5vw);
+    letter-spacing: -1px;
     margin-bottom: 5%;
     margin-top: 10%;
+    color: #E8E0D3;
+    width: 100%;
 }
 
 .titlespacer {
@@ -24,9 +19,38 @@ h1 {
     max-width: 100px;
 }
 
+.textspacer {
+    display: inline-block;
+    content: '';
+    width: 8%;
+    min-width: 20px;
+    max-width: 100px;
+}
+
+@media only screen and (orientation: landscape) {
+    .artisttable {
+        display: inline-block;
+        width: 30%;
+    }
+}
+
+@media only screen and (orientation: portrait) {
+    .artisttable {
+        width: 100%;
+    }
+}
+
+p.introtext {
+    font-size: calc(16px + .25vw);
+    display: inline-block;
+    max-width: 525px;
+    width: 100%;
+}
+
 body {
     font-family: 'IBM Plex Sans', sans-serif;
     background-color: #C04042;
-    font-size: 16px;
+    font-size: calc(16px + .25vw);
     color: #F2EBDF;
+    margin: 10px;
 }

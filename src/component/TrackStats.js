@@ -1,6 +1,5 @@
 import React from 'react';
 import * as logic from './logic.js';
-import 'bootstrap/dist/css/bootstrap.css';
 
 class TrackStatsContainer extends React.Component {
     
