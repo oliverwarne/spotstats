@@ -8,9 +8,7 @@ body {
     padding: 0% 2%;
 }
 
-.label {
-    display: inline-block;
-}
+
 .artistrow {
     margin-bottom: 18px;
 
@@ -23,34 +21,41 @@ body {
     border-collapse: collapse;
 }
 
-hr {
-    display: block; height: 1px;
-    border: 0; border-top: 1px solid #ECD078;
-    margin: 10px 0; padding: 0;
-    margin-left: 0px;
-    margin-right: 5em;
-    max-width: 200px;
+.container {
+    display: inline-block;
 }
-
 @media only screen and (orientation: portrait) {
-    hr {
-        display: none;
-        height: 11em;
+    .container {
+        padding-left: 20px;
         border-left: solid #ECD078;
-        margin-left: 0;
-
+        margin-bottom: 5%;
+    }
+    .label {
+        width: 3em;
+        margin-left: auto;
+        display: inline-block;
+        transform: rotate(-90);
+        -webkit-transform: rotate(-90deg);
     }
 }
 
+@media only screen and (orientation: landscape) {
+    .label {
+        padding-bottom: 20px;
+        border-bottom: solid #ECD078;
+        width: 50%;
+        max-width: 300px;
+    }
+    .container {
+        padding-top: 20px;
+    }
+}
 
 p {
     font-size: 18px;
     margin: 0px;
 }
 
-.container {
-    display: inline-block;
-}
 
 .btn-link:border {
     color: none;

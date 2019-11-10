@@ -79,15 +79,12 @@ class ArtistTableContainer extends React.Component {
         return (
             <div className='artisttable'>
                     <div className='label'> {this.props.label} </div>
-                    {/*
                     <div className='buttons'>
                         <Prev toggle={(e) => this.backPage(e)} active={prev_disabled} />
                         <Next toggle={(e) => this.forwardPage(e)} active={next_disabled} />
                     </div>
-                    */}
-                <hr />
                 <SortedArtistTable 
-                    artists={this.state.page_artists.slice(0,5)} />
+                    artists={this.state.page_artists.slice(0,10)} />
             </div>
         )
     }

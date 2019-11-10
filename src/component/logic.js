@@ -174,24 +174,35 @@ export function getAlbumGenre(album_id) {
 
 export async function getMonthsTrackMap() {
     let tracks = JSON.parse(localStorage.getItem("saved_track_list"));
-    var year_map = new Map();
+    var year_map = {};
     function insertToYearMap(track) {
         var year  = track.time.slice(0,4);
         var month = track.time.slice(5,7);
-        if(!year_map.has(year)) {
-            year_map.set(year, new Map());
+        // if the year does not exist in map, make it and insert it
+        if(!year_map.hasOwnProperty(year)) {
+            year_map[year] =  {};
         }
-        var track_year_map = year_map.get(year);
-        if(!track_year_map.has(month)) {
-            track_year_map.set(month, new Map());
+        // get the map for the year
+        var track_year_map = year_map[year];
+        // if the year map doesn't exist, then make it
+        if(!track_year_map.hasOwnProperty(month)) {
+            track_year_map[month] =  [];
         }
-        
+        // get the month map
+        var track_month_array = track_year_map[month];
+        // inser the track into the month map
+        track_month_array.push(track);
+        // save the month map into the year map
+        track_year_map[month] = track_month_array;
+
 
     };
     tracks.forEach((track) => {
         insertToYearMap(track);
     });
     console.log(year_map);
+    console.log(JSON.stringify(year_map));
+    localStorage.setItem("track_date_map", JSON.stringify(year_map));
 }
 
 export async function getUserSavedTracks() {
@@ -230,8 +241,86 @@ export async function getTopArtists() {
 
     resp = await spotifyApi.getMyTopArtists({limit: 50, time_range: 'medium_term'});
     localStorage.setItem("top_artists_medium_term", JSON.stringify(resp));
+
+    resp = await spotifyApi.getMyTopArtists({limit: 50, time_range: 'short_term'});
+    localStorage.setItem("top_artists_short_term", JSON.stringify(resp));
+
     return; 
 }
 
-                       
+export async function getTopGenres() {
+    let tracks = JSON.parse(localStorage.getItem("saved_track_list"));
+    var genre_map = {};
+    tracks.forEach((track) => {
+      track.genres.forEach((genre) => {
+        if(!genre_map.hasOwnProperty(genre)) {
+            genre_map[genre] = 0;
+        };
+
+        genre_map[genre] += 1;
+      });
+    });
+    var keys_sorted = Object.keys(genre_map).sort(function(a,b){
+        return genre_map[b]-genre_map[a]
+        }
+    );
+
+    localStorage.setItem("sorted_genres", JSON.stringify(keys_sorted));
+    //console.log(keys_sorted);
+    /*
+    for(var i=0; i < 5; i++) {
+        console.log(keys_sorted[i]);
+    }*/
+}
+
+function getMonthNumber(start_month, start_year, month, year) {
+    var num = (year - start_year) * 12;
+    num -= ((start_month * 1) + 1) 
+    num += (month * 1);
+
+    if(num === -1) {
+        return 0;
+    }
+    return num;
+}
+
+export async function getGenreGraphList(genre) {
+    let tracks = JSON.parse(localStorage.getItem("saved_track_list"));
+
+    var frequency_list = [];
+    var first_date = tracks[tracks.length - 1].time;
+    var last_date  = tracks[0].time;
+
+    var first_year  = first_date.slice(0,4);
+    var first_month = first_date.slice(5,7); 
+    var last_year   = last_date.slice(0,4);
+    var last_month  = last_date.slice(5,7);
+
+    var total_months = 0;
+    // the difference between the years * 12
+    console.log(first_date);
+    console.log(last_date);
+    total_months = (last_year - first_year) * 12;
+
+    //console.log(total_months);
+    //console.log((first_month * 1) + 1);
+    total_months -= ((first_month * 1) + 1);
+    //console.log(total_months);
+    total_months += (last_month * 1);
+    //console.log(total_months);
+
+    console.log(total_months);
+
+    frequency_list.length = total_months + 1;
+    frequency_list.fill(0);
+
+    tracks.forEach((track) => {
+        if(track.genres.includes(genre)) {
+            frequency_list[getMonthNumber(first_month, first_year, 
+                track.time.slice(5,7), track.time.slice(0,4))] += 1;
+        };
+    });
+    console.log(frequency_list);
+
+}
 //export default updateLocalStorage;

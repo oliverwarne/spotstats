@@ -1,0 +1,20 @@
+/* TrackArtistSwitcher.css */
+
+.title {
+    display: inline-block;
+    margin-left: 0;
+    font-family: 'frank ruhl libre', serif;
+    font-size: calc(50px + 1.5vw);
+    letter-spacing: -1px;
+    color: #e8e0d3;
+}
+
+.hide {
+    display: inline-block;
+    margin-left: 0;
+    font-family: 'Frank Ruhl Libre', serif;
+    font-size: calc(50px + 1.5vw);
+    letter-spacing: -1px;
+    color: #E8E0D3;
+    opacity: 0.5;
+}
